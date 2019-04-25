@@ -1,5 +1,6 @@
 package cn.zhangxd.svcb;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
@@ -12,6 +13,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @SpringBootApplication
 @EnableCircuitBreaker
 @EnableOAuth2Client
+@MapperScan(basePackages = "cn.zhangxd.svcb.repository")
 public class ServiceBApplication {
 
     public static void main(String[] args) {

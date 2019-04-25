@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.zhangxd.svcb.repository.UserRepository">
+    <resultMap id="UserMap" type="User">
+
+    </resultMap>
+
+    <select id="get" resultMap="UserMap">
+        select * from user where id = #{id}
+    </select>
+
+    <insert id="add" keyColumn="id" useGeneratedKeys="true">
+        insert into user(name, mobile, email, birthday)
+          values (#{name}, #{mobile}, #{email}, #{birthday})
+    </insert>
+    
+    <update id="update" >
+        update user 
+        <set>
+            <if test="name != null and name != '' "> name = #{name},</if>
+            <if test="mobile != null and mobile != '' "> mobile = #{mobile},</if>
+            <if test="email != null and email != '' "> email = #{email},</if>
+            <if test="birthday != null and birthday != '' "> birthday = #{birthday},</if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <delete id="delete" >
+        delete from user where id =#{id}
+    </delete>
+
+</mapper>
